@@ -3,6 +3,7 @@ package com.newstask.nytimes.data.repository
 
 import com.newstask.nytimes.data.factory.NewsFactory
 import com.newstask.nytimes.data.model.MostPopularResponce
+import com.newstask.nytimes.data.model.NewsResultsModel
 import com.newstask.nytimes.domain.repository.NewsRepository
 import com.newstask.nytimes.util.Source
 import kotlinx.coroutines.Dispatchers
@@ -17,9 +18,9 @@ class RepositoryImpl @Inject constructor(
     private val factory: NewsFactory
 ) : NewsRepository {
 
-    override suspend fun getMostPopular(): Flow<Response<MostPopularResponce>> {
+    override suspend fun getMostPopular(): Flow<List<NewsResultsModel>> {
         return flow{
-            emit( factory.create(Source.NETWORK).getMostPopular())
+            emit( factory.create(Source.NETWORK).getMostPopular().body()!!.results)
         }.flowOn(Dispatchers.IO)
     }
 

@@ -35,7 +35,7 @@ buildscript {
         gradle_build_tools = '7.2.1'
         // https://mvnrepository.com/artifact/com.android.tools.build/gradle?repo=google
 
-        hilt_version = '2.41'
+        hilt_version = '2.42'
         // https://github.com/google/dagger/releases
 
         kotlin_allopen = '1.6.21'
@@ -62,7 +62,7 @@ buildscript {
         oklog3 = '2.3.0'
         // https://github.com/simonpercic/OkLog/releases
 
-        kotlinx_coroutines_android = '1.6.4'
+        kotlinx_coroutines_android = '1.6.1'
         // https://github.com/Kotlin/kotlinx.coroutines/releases
 
         kotlinx_coroutines_core = '1.6.1'
@@ -107,6 +107,7 @@ buildscript {
 
         nav_version = '2.3.0-alpha02'
 
+        multidex_version = "2.0.1"
 
     }
 
@@ -129,4 +130,7 @@ plugins {
     id 'com.android.application' version '7.4.0' apply false
     id 'com.android.library' version '7.4.0' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.21' apply false
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
